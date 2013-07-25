@@ -1,20 +1,31 @@
-Gem::Specification.new do |s|
-  s.name = %q{acts_as_seo_friendly}
-  s.version = "2.0"
+# coding: utf-8
+lib = File.expand_path('../lib', __FILE__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+require 'acts_as_seo_friendly/version'
 
-  s.specification_version = 2 if s.respond_to? :specification_version=
+Gem::Specification.new do |spec|
+  spec.name          = "acts_as_seo_friendly"
+  spec.version       = ActsAsSeoFriendly::VERSION
+  spec.authors       = ["Brooks Robertson"]
+  spec.email         = ["brobertson@everydayhealthinc.com"]
+  spec.description   = %q{provides a seo friendly version of record id}
+  spec.summary       = %q{provides a seo friendly version of record id}
+  spec.homepage      = "http://github.com/brooksjbr/acts_as_seo_friendly"
+  spec.license       = "MIT"
 
-  s.authors = ["Everyday Health"]
-  s.autorequire = %q{acts_as_seo_friendly}
-  s.date = %q{2013-07-02}
-  s.description = %q{provides a seo friendly version of field on a table}
-  s.email = %q{brobertson@everydayhealthinc.com}
-  s.extra_rdoc_files = ["README", "LICENSE", "TODO"]
-  s.files = ["LICENSE", "README", "Rakefile", "TODO", "lib/acts_as_seo_friendly", "lib/acts_as_seo_friendly/version.rb", "lib/acts_as_seo_friendly.rb", "test/active_record_test_helper.rb", "test/seo_test_model.rb", "test/seo_test_model_conditions.rb", "test/test_acts_as_seo_friendly.rb", "test/test_helper.rb"]
-  s.homepage = %q{http://github.com/brooksjbr/acts_as_seo_friendly}
-  s.rdoc_options = ["--main", "README"]
-  s.require_paths = ["lib"]
-  s.rubygems_version = %q{2.0.3}
-  s.summary = %q{provides a seo friendly version of field on a table}
-  s.test_files = ["test/active_record_test_helper.rb", "test/seo_test_model.rb", "test/seo_test_model_conditions.rb", "test/test_acts_as_seo_friendly.rb", "test/test_helper.rb"]
+  spec.files         = `git ls-files`.split($/)
+  spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
+  spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
+  spec.require_paths = ["lib"]
+
+  spec.add_dependency "rails", "~> 4.0.0"
+
+  spec.add_development_dependency "sqlite3"
+  
+  spec.add_development_dependency "rspec-rails"
+  spec.add_development_dependency "capybara"
+  spec.add_development_dependency "debugger"
+  spec.add_development_dependency "bundler", "~> 1.3"
+  spec.add_development_dependency "rake"
+  
 end

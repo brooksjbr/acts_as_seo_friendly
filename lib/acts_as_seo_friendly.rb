@@ -1,3 +1,6 @@
+require "acts_as_seo_friendly/version"
+require "active_record"
+require "active_record/version"
 
 module ActiveRecord
   module Acts #:nodoc:
@@ -64,7 +67,7 @@ module ActiveRecord
         def create_seo_friendly_id
           ## return if there are errors
           return if self.errors.size > 0
-          
+
           seo_id_field = self.class.seo_friendly_options[:seo_friendly_id_field].to_s
           count_seo_id_field = "count_#{seo_id_field}"
           count_seo_id_field_N = "#{count_seo_id_field}_N"
@@ -92,9 +95,9 @@ module ActiveRecord
               seo_field_value = self['id'] if seo_field_value.size > seo_friendly_id_limit # still doesn't fit..give up, store the id
             end
 
-            # DO WE NEED THIS?? GETTING DEPRECATION WARNINGS ON UPDATE ALL AND id SEEMS TO ALWAYS BE nil
             if !self.id.nil?
-              self.class.update_all("#{seo_id_field} = \'#{seo_field_value}\'", ["id = ?", self.id])
+              #self.class.update_all("#{seo_id_field} = \'#{seo_field_value}\'", ["id = ?", self.id])
+              self.update(seo_id_field.to_sym => seo_field_value)
             end
             
             # set it so that it can be used after this..
@@ -144,9 +147,9 @@ module ActiveRecord
         
         def create_seo_friendly_str(str, digits = INITITAL_SEO_UNIQUE_DIGITS)
           s = str.dup
-          s.gsub!("“", "")
-          s.gsub!("”", "")
-          s.gsub!("’", "")
+          s.gsub!("\"", "")
+          #s.gsub!("”", "")
+          #s.gsub!("’", "")
           s.gsub!(/\'/, '')
           s.gsub!(/\W+/, ' ')  
           s.strip!
@@ -181,4 +184,7 @@ module ActiveRecord
   end
 end
 
-ActiveRecord::Base.send(:include, ActiveRecord::Acts::SeoFriendly)
+if defined?(ActiveRecord::Base)
+  ActiveRecord::Base.send(:include, ActiveRecord::Acts::SeoFriendly)
+end
+
