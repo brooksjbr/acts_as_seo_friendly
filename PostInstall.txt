@@ -1,3 +1,0 @@
-
-For more information on acts_as_seo_friendly, see http://github.com/revolutionhealth/acts_as_seo_friendly/tree/master
-
