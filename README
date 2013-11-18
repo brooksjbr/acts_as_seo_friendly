@@ -60,6 +60,11 @@ To lookup the resource in the controllers use:
 * gem acts_as_seo_friendly -s http://gems.github.com
 
 
+== RUN SPEC TESTS 
+
+rspec spec/acts_as_seo_friendly
+
+
 == LICENSE:
 
 (The MIT License)
