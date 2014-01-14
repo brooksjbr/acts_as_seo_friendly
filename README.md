@@ -11,15 +11,12 @@ of the 'title' field, you would just add this to your model and then be able to
 use the SEO friendly id as the unique id to the resource.  The plugin will only
 append an integer to the SEO id if there is a collision.
 
-## FEATURES/PROBLEMS:
-
-* Only tested on mysql
-
-== SYNOPSIS:
+## SYNOPSIS:
 
 
 Create seo column migration:
 
+```ruby
  class CreateSeoTestModels < ActiveRecord::Migration
    def self.up
      create_table :seo_test_models do |t|
@@ -34,16 +31,17 @@ Create seo column migration:
      drop_table :seo_test_models
    end
  end
-
+```
 
 Add to model:
 
+```ruby
  class SeoTestModel < ActiveRecord::Base
 	acts_as_seo_friendly :resource_id => :name, 
 					     :seo_friendly_id_field => :seo_id, # default is :seo_friendly_id
 					     :seo_friendly_id_limit => 100 # default is 50
  end
-
+```
 
 To lookup the resource in the controllers use:
 
@@ -56,24 +54,20 @@ Rails 4.0
 
 ## INSTALLATION:
 
-```ruby
-	gem 'acts_as_seo_friendly', :git => 'git://github.com/brooksjbr/acts_as_seo_friendly'
-```
+Add to Gemfile:
 
-```shell
-	bundle
-```
+	gem 'acts_as_seo_friendly', :git => 'git://github.com/brooksjbr/acts_as_seo_friendly'
+
+
+	$ bundle
+
 
 ## RUN SPEC TESTS 
 
-```shell
-	rspec spec/acts_as_seo_friendly
-```
+	$ rspec spec/acts_as_seo_friendly
 
 
-
-
-== LICENSE:
+## LICENSE:
 
 (The MIT License)
 
