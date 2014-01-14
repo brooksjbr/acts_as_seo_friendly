@@ -1,8 +1,8 @@
-# ActsAsSeoFriendly
+## ActsAsSeoFriendly
 
 This is a fork of revolutionhealth-acts_as_seo_friendly gem. This fork maintains all original functionality and is purely an upgrade for compatibility with rails 4.
 
-## DESCRIPTION:
+### DESCRIPTION:
 
 Create an SEO friendly field for a model automatically based on a given field.
 
@@ -11,8 +11,7 @@ of the 'title' field, you would just add this to your model and then be able to
 use the SEO friendly id as the unique id to the resource.  The plugin will only
 append an integer to the SEO id if there is a collision.
 
-## SYNOPSIS:
-
+### SYNOPSIS:
 
 Create seo column migration:
 
@@ -47,12 +46,12 @@ To lookup the resource in the controllers use:
 
   SeoTestModel.find_by_seo_id(params[:id])
 
-## Compatibility
+### Compatibility
 
-Ruby 2.0
-Rails 4.0
+	Ruby 2.0
+	Rails 4.0
 
-## INSTALLATION:
+### INSTALLATION:
 
 Add to Gemfile:
 
@@ -62,12 +61,12 @@ Add to Gemfile:
 	$ bundle
 
 
-## RUN SPEC TESTS 
+### RUN SPEC TESTS 
 
 	$ rspec spec/acts_as_seo_friendly
 
 
-## LICENSE:
+### LICENSE:
 
 (The MIT License)
 
