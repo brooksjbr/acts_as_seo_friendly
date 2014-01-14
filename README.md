@@ -6,7 +6,7 @@ This is a fork of revolutionhealth-acts_as_seo_friendly gem. This fork maintains
 
 ActsAsSEOFriendly will convert a string into a dash limited unique id from a piece of content. This
 is useful for creating SEO friendly ids for user generated content such as blogs or forums based off post titles. 
-All special characters will be striped from the string leaving an alphanumeric id. A digit will be appended to the end
+All special characters will be striped from the string to a lower case alphanumeric id. A digit will be appended to the end
 of the id in the event a string already exists to ensure uniqueness. This value will be incremented 1 for each
 subsequent identical string that's created.
 
@@ -41,11 +41,12 @@ Add to model:
  end
 ```
 
-A instance method will be added to the implemented class to object:
+A instance method will be added to the implemented class object:
 
 ```ruby
 	foo = SeoTestModel.find_by_seo_id(params[:id])
 	foo.seo_id
+	"my-seo-friendly-id"
 ```
 
 ### Compatibility
