@@ -2,7 +2,7 @@
 
 This is a fork of revolutionhealth-acts_as_seo_friendly gem. This fork maintains all original functionality and is an upgrade for compatibility with rails 4.0 and Ruby 2.0.
 
-### DESCRIPTION:
+### Description:
 
 ActsAsSEOFriendly will convert a string into a dash limited unique id from a piece of content. This
 is useful for creating SEO friendly ids for user generated content such as blogs or forums based off post titles. 
@@ -55,7 +55,7 @@ A instance method will be added to the implemented class object:
 	Rails 4.0
 	Mysql
 
-### INSTALLATION:
+### Installation:
 
 Add to Gemfile:
 
@@ -66,12 +66,12 @@ Run bundle:
 	$ bundle
 
 
-### RUN SPEC TESTS 
+### Run specs 
 
 	$ rspec spec/acts_as_seo_friendly
 
 
-### LICENSE:
+### License:
 
 (The MIT License)
 
