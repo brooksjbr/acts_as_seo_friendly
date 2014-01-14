@@ -1,15 +1,14 @@
 ## ActsAsSeoFriendly
 
-This is a fork of revolutionhealth-acts_as_seo_friendly gem. This fork maintains all original functionality and is purely an upgrade for compatibility with rails 4.
+This is a fork of revolutionhealth-acts_as_seo_friendly gem. This fork maintains all original functionality and is an upgrade for compatibility with rails 4.0 and Ruby 2.0.
 
 ### DESCRIPTION:
 
-Create an SEO friendly field for a model automatically based on a given field.
-
-So if you have a Blogs model, and you would like create an SEO friendly version 
-of the 'title' field, you would just add this to your model and then be able to 
-use the SEO friendly id as the unique id to the resource.  The plugin will only
-append an integer to the SEO id if there is a collision.
+ActsAsSEOFriendly will convert a string into a dash limited unique id for a piece of content. This
+is useful for creating SEO friendly ids for user generated content such as blogs and forums based off post titles. 
+All special characters will be striped from the string leaving an alphanumeric id. A digit will be appended to the end
+of the id in the event a string already exists to ensure uniqueness. This value will be incremented 1 for each
+subsequent identical string that's created.
 
 ### SYNOPSIS:
 
@@ -37,8 +36,8 @@ Add to model:
 ```ruby
  class SeoTestModel < ActiveRecord::Base
 	acts_as_seo_friendly :resource_id => :name, 
-					     :seo_friendly_id_field => :seo_id, # default is :seo_friendly_id
-					     :seo_friendly_id_limit => 100 # default is 50
+					     				 :seo_friendly_id_field => :seo_id, # default is :seo_friendly_id
+					             :seo_friendly_id_limit => 100 # default is 50
  end
 ```
 
@@ -57,7 +56,7 @@ Add to Gemfile:
 
 	gem 'acts_as_seo_friendly', :git => 'git://github.com/brooksjbr/acts_as_seo_friendly'
 
-
+Run bundle	
 	$ bundle
 
 
