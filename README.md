@@ -57,7 +57,8 @@ Add to Gemfile:
 
 	gem 'acts_as_seo_friendly', :git => 'git://github.com/brooksjbr/acts_as_seo_friendly'
 
-Run bundle	
+Run bundle:
+	
 	$ bundle
 
 
