@@ -10,7 +10,7 @@ All special characters will be striped from the string leaving an alphanumeric i
 of the id in the event a string already exists to ensure uniqueness. This value will be incremented 1 for each
 subsequent identical string that's created.
 
-### SYNOPSIS:
+### Implementation:
 
 Create seo column migration:
 
@@ -36,8 +36,8 @@ Add to model:
 ```ruby
  class SeoTestModel < ActiveRecord::Base
 	acts_as_seo_friendly :resource_id => :name, 
-					     				 :seo_friendly_id_field => :seo_id, # default is :seo_friendly_id
-					             :seo_friendly_id_limit => 100 # default is 50
+				:seo_friendly_id_field => :seo_id, # default is :seo_friendly_id
+				:seo_friendly_id_limit => 100 # default is 50
  end
 ```
 
