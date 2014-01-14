@@ -49,6 +49,7 @@ To lookup the resource in the controllers use:
 
 	Ruby 2.0
 	Rails 4.0
+	Mysql
 
 ### INSTALLATION:
 
