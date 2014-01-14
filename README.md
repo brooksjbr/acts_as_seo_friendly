@@ -41,9 +41,12 @@ Add to model:
  end
 ```
 
-To lookup the resource in the controllers use:
+A instance method will be added to the implemented class to object:
 
-  SeoTestModel.find_by_seo_id(params[:id])
+```ruby
+	foo = SeoTestModel.find_by_seo_id(params[:id])
+	foo.seo_id
+```
 
 ### Compatibility
 
