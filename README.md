@@ -36,8 +36,8 @@ Add to model:
 ```ruby
  class SeoTestModel < ActiveRecord::Base
 	acts_as_seo_friendly :resource_id => :name, 
-						:seo_friendly_id_field => :seo_id, # default is :seo_friendly_id
-						:seo_friendly_id_limit => 100 # default is 50
+						 :seo_friendly_id_field => :seo_id, # default is :seo_friendly_id
+						 :seo_friendly_id_limit => 100 # default is 50
  end
 ```
 
