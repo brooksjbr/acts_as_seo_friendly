@@ -49,20 +49,28 @@ To lookup the resource in the controllers use:
 
   SeoTestModel.find_by_seo_id(params[:id])
 
-## REQUIREMENTS:
+## Compatibility
 
+Ruby 2.0
+Rails 4.0
 
-## GEM INSTALL:
+## INSTALLATION:
 
-* gem acts_as_seo_friendly -s http://gems.github.com
+```ruby
+	gem 'acts_as_seo_friendly', :git => 'git://github.com/brooksjbr/acts_as_seo_friendly'
+```
 
-## Bundle install
-
-gem 'acts_as_seo_friendly', :git => 'git://github.com/brooksjbr/acts_as_seo_friendly'
+```shell
+	bundle
+```
 
 ## RUN SPEC TESTS 
 
-rspec spec/acts_as_seo_friendly
+```shell
+	rspec spec/acts_as_seo_friendly
+```
+
+
 
 
 == LICENSE:
