@@ -19,13 +19,12 @@ Create seo column migration:
    def self.up
      create_table :seo_test_models do |t|
        t.string :name
+       t.string :seo_id # default is :seo_friendly_id
        t.timestamps
      end
-	 SeoTestModel.create_seo_friendly_column()
    end
 
    def self.down
-	 SeoTestModel.drop_seo_friendly_column()
      drop_table :seo_test_models
    end
  end
