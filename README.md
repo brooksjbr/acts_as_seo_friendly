@@ -53,6 +53,7 @@ A instance method will be added to the implemented class object:
 	Ruby 2.0
 	Rails 4.0
 	Mysql
+	Postgres
 
 ### Installation:
 
