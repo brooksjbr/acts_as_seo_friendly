@@ -5,8 +5,23 @@ require "active_record/version"
 module ActiveRecord
   module Acts #:nodoc:
     module SeoFriendly #:nodoc:
-      def self.included(base)
-        base.extend(ClassMethods)
+
+      def acts_as_seo_friendly(options = {})  
+        options = {:seo_friendly_id_field => :seo_friendly_id, :seo_friendly_id_limit => 50}.merge(options)
+        class_attribute :seo_friendly_options
+        self.seo_friendly_options = options if self.respond_to?(:seo_friendly_options)
+        
+        if options[:do_before_create]
+          before_create :create_seo_friendly_id
+        elsif options[:do_before_save]
+          before_save :create_seo_friendly_id
+        else
+          after_save :create_seo_friendly_id
+        end
+        to_param_with(self.seo_friendly_options[:seo_friendly_id_field])
+        
+        include InstanceMethods
+        include MigrationMethods
       end
 
       module MigrationMethods
@@ -21,42 +36,6 @@ module ActiveRecord
           seo_column_name = self.seo_friendly_options[:seo_friendly_id_field].to_s
           self.connection.remove_index table_name(), seo_column_name
           self.connection.remove_column table_name(), seo_column_name
-        end
-      end
-
-      module ClassMethods
-        #
-        # Use find_by_seo_friendly_id
-        def acts_as_seo_friendly(options = {})
-          options = {:seo_friendly_id_field => :seo_friendly_id, :seo_friendly_id_limit => 50}.merge(options)
-          class_attribute :seo_friendly_options
-          self.seo_friendly_options = options if self.respond_to?(:seo_friendly_options)
-          
-          if options[:do_before_create]
-            before_create :create_seo_friendly_id
-          elsif options[:do_before_save]
-            before_save :create_seo_friendly_id
-          else
-            after_save :create_seo_friendly_id
-          end
-          to_param_with(self.seo_friendly_options[:seo_friendly_id_field])
-          
-          if !self.included_modules.include?(ActiveRecord::Acts::SeoFriendly::InstanceMethods)
-            include ActiveRecord::Acts::SeoFriendly::InstanceMethods
-          end
-        end
-        
-        include ActiveRecord::Acts::SeoFriendly::MigrationMethods
-        
-        private
-        def to_param_with(attr_sym)
-          return if attr_sym.nil?
-          attr_str = attr_sym.to_s
-          class_eval <<-EOS
-            def to_param
-              (#{attr_str} = self.#{attr_str}) ? #{attr_str} : nil
-            end
-          EOS
         end
       end
       
@@ -180,11 +159,23 @@ module ActiveRecord
             end  
         end
       end
+
+      private
+      def to_param_with(attr_sym)
+        return if attr_sym.nil?
+        attr_str = attr_sym.to_s
+        class_eval <<-EOS
+          def to_param
+            (#{attr_str} = self.#{attr_str}) ? #{attr_str} : nil
+          end
+        EOS
+      end
+
     end
   end
 end
 
 if defined?(ActiveRecord::Base)
-  ActiveRecord::Base.send(:include, ActiveRecord::Acts::SeoFriendly)
+  ActiveRecord::Base.extend ActiveRecord::Acts::SeoFriendly
 end
 
